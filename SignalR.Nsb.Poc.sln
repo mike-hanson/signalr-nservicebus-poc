@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalR.Nsb.Poc.Web", "SignalR.Nsb.Poc.Web\SignalR.Nsb.Poc.Web.csproj", "{0CE357F8-64DC-4DC5-90C9-870E7F6A4813}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalR.Nsb.Poc.Sales", "SignalR.Nsb.Poc.Sales\SignalR.Nsb.Poc.Sales.csproj", "{63642ACD-BD5A-4746-BBE9-19D54EBCD02E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalR.Nsb.Poc.Messages", "SignalR.Nsb.Poc.Messages\SignalR.Nsb.Poc.Messages.csproj", "{82772851-FC6F-4EB9-98A0-ED6C72F843CD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalR.Nsb.Poc.Billing", "SignalR.Nsb.Poc.Billing\SignalR.Nsb.Poc.Billing.csproj", "{50103506-44CE-4181-80A1-DA5ED447A9E7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalR.Nsb.Poc.Shipping", "SignalR.Nsb.Poc.Shipping\SignalR.Nsb.Poc.Shipping.csproj", "{F780A5A8-D819-4545-A235-60CBCFF8B9D0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalR.Nsb.Poc.Web.Tests", "SignalR.Nsb.Poc.Web.Tests\SignalR.Nsb.Poc.Web.Tests.csproj", "{AE0693E6-6593-4EDF-BDA1-05A14C151DEB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalR.Nsb.Poc.NServiceBus", "SignalR.Nsb.Poc.NServiceBus\SignalR.Nsb.Poc.NServiceBus.csproj", "{320D6FB2-0432-4993-A631-315DB7B524C4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalR.Nsb.Poc.NServiceBus.Tests", "SignalR.Nsb.Poc.NServiceBus.Tests\SignalR.Nsb.Poc.NServiceBus.Tests.csproj", "{317E6AAE-B6BF-4CC0-A327-01E024E0DF86}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F50B3B19-2A59-4A94-95BA-D8D98F9FAE8F}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{E914570A-A63C-48AC-8872-F9E4F8814D73}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0CE357F8-64DC-4DC5-90C9-870E7F6A4813}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CE357F8-64DC-4DC5-90C9-870E7F6A4813}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CE357F8-64DC-4DC5-90C9-870E7F6A4813}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CE357F8-64DC-4DC5-90C9-870E7F6A4813}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63642ACD-BD5A-4746-BBE9-19D54EBCD02E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63642ACD-BD5A-4746-BBE9-19D54EBCD02E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63642ACD-BD5A-4746-BBE9-19D54EBCD02E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63642ACD-BD5A-4746-BBE9-19D54EBCD02E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82772851-FC6F-4EB9-98A0-ED6C72F843CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82772851-FC6F-4EB9-98A0-ED6C72F843CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82772851-FC6F-4EB9-98A0-ED6C72F843CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82772851-FC6F-4EB9-98A0-ED6C72F843CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50103506-44CE-4181-80A1-DA5ED447A9E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50103506-44CE-4181-80A1-DA5ED447A9E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50103506-44CE-4181-80A1-DA5ED447A9E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50103506-44CE-4181-80A1-DA5ED447A9E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F780A5A8-D819-4545-A235-60CBCFF8B9D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F780A5A8-D819-4545-A235-60CBCFF8B9D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F780A5A8-D819-4545-A235-60CBCFF8B9D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F780A5A8-D819-4545-A235-60CBCFF8B9D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE0693E6-6593-4EDF-BDA1-05A14C151DEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE0693E6-6593-4EDF-BDA1-05A14C151DEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE0693E6-6593-4EDF-BDA1-05A14C151DEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE0693E6-6593-4EDF-BDA1-05A14C151DEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{320D6FB2-0432-4993-A631-315DB7B524C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{320D6FB2-0432-4993-A631-315DB7B524C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{320D6FB2-0432-4993-A631-315DB7B524C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{320D6FB2-0432-4993-A631-315DB7B524C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{317E6AAE-B6BF-4CC0-A327-01E024E0DF86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{317E6AAE-B6BF-4CC0-A327-01E024E0DF86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{317E6AAE-B6BF-4CC0-A327-01E024E0DF86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{317E6AAE-B6BF-4CC0-A327-01E024E0DF86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E914570A-A63C-48AC-8872-F9E4F8814D73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E914570A-A63C-48AC-8872-F9E4F8814D73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E914570A-A63C-48AC-8872-F9E4F8814D73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E914570A-A63C-48AC-8872-F9E4F8814D73}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {511696F5-8574-425A-8C43-A11BE46B78D7}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  signalr.nsb.poc.sales:
+    image: signalrnsbpocsales
+    build:
+      context: .
+      dockerfile: SignalR.Nsb.Poc.Sales\Dockerfile
+    depends_on:
+      - rabbitmq         
+ 
+  rabbitmq:
+    image: spring2/rabbitmq
+    ports:
+      - "15672:15672"    
+      - "5672:5672"

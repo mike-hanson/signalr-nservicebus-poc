@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="SignalR.Nsb.Poc.Sales.csproj.DotSettings" />
+    <None Remove="SignalR.Nsb.Poc.Sales.v3.ncrunchproject" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NServiceBus" Version="7.0.0-rc0002" />
+    <PackageReference Include="NServiceBus.Newtonsoft.Json" Version="2.1.0-beta0001" />
+    <PackageReference Include="NServiceBus.RabbitMQ" Version="5.0.0-rc0001" />
+    <PackageReference Include="RabbitMQ.Client" Version="5.1.0-rc1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SignalR.Nsb.Poc.Messages\SignalR.Nsb.Poc.Messages.csproj" />
+    <ProjectReference Include="..\SignalR.Nsb.Poc.NServiceBus\SignalR.Nsb.Poc.NServiceBus.csproj" />
+  </ItemGroup>
+
+</Project>

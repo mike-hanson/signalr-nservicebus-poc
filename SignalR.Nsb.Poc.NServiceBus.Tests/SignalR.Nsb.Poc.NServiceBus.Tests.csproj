@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="5.2.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
+    <PackageReference Include="xunit" Version="2.4.0-beta.1.build3958" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0-beta.1.build3958" />
+    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SignalR.Nsb.Poc.NServiceBus\SignalR.Nsb.Poc.NServiceBus.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="NServiceBus.Newtonsoft.Json">
+      <HintPath>..\..\..\Users\hansom\.nuget\packages\nservicebus.newtonsoft.json\2.1.0-beta0001\lib\netstandard2.0\NServiceBus.Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus.Transport.RabbitMQ">
+      <HintPath>..\..\..\Users\hansom\.nuget\packages\nservicebus.rabbitmq\5.0.0-rc0001\lib\netstandard2.0\NServiceBus.Transport.RabbitMQ.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
