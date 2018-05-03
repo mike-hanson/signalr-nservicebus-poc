@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using SignalR.Nsb.Poc.NServiceBus;
@@ -14,7 +16,12 @@ namespace SignalR.Nsb.Poc.Web
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSignalR();
+            services.AddSignalR(options =>
+            {
+                options.EnableDetailedErrors = true;
+                options.KeepAliveInterval = TimeSpan.FromSeconds(5);
+                options.SupportedProtocols = new List<string> {"WebSockets", "LongPolling"};
+            });
             services.AddSingleton<IOrderHubMessageDispatcher, OrderHubMessageDispatcher>();
             services.AddTransient<IEndpointInstanceBuilder, EndpointInstanceBuilder>();
             services.AddSingleton<IOrderEndpoint, OrderEndpoint>();
@@ -32,6 +39,7 @@ namespace SignalR.Nsb.Poc.Web
 
             app.UseDefaultFiles()
                 .UseStaticFiles()
+                .UseWebSockets()
                 .UseSignalR(routes => { routes.MapHub<OrderHub>("/hubs/order"); })
                 .UseMvc();
         }

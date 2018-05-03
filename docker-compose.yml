@@ -1,16 +1,54 @@
-version: '3'
+version: '2.3'
 
 services:
-  signalr.nsb.poc.sales:
-    image: signalrnsbpocsales
+  rabbitmq:
+    image: "spring2/rabbitmq"
+    ports:
+      - "15672:15672"    
+      - "5672:5672"
+    healthcheck:
+      test: ["CMD-SHELL", "for /f %i in ('rabbitmqctl status') do (set RESULT=%i)\n  if not \"%RESULT%\"==\"\" \nexit 0 \nelse \nexit 1"]
+      interval: 10s
+      retries: 5
+    hostname: rabbitmq
+
+  sales-service:
+    image: sales-service
     build:
       context: .
       dockerfile: SignalR.Nsb.Poc.Sales\Dockerfile
     depends_on:
-      - rabbitmq         
- 
-  rabbitmq:
-    image: spring2/rabbitmq
+      rabbitmq:
+        condition: service_healthy
+
+  shipping-service:
+    image: shipping-service
+    build:
+      context: .
+      dockerfile: SignalR.Nsb.Poc.Shipping\Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  billing-service:
+    image: billing-service
+    build:
+      context: .
+      dockerfile: SignalR.Nsb.Poc.Billing\Dockerfile
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  web-app:
+    image: web-app
     ports:
-      - "15672:15672"    
-      - "5672:5672"
+      - "80"
+    build:
+      context: .
+      dockerfile: SignalR.Nsb.Poc.Web\Dockerfile
+    hostname: webapp
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development 

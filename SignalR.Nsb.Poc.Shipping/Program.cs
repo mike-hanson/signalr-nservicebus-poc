@@ -1,26 +1,62 @@
 ﻿using System;
+using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
-using NServiceBus;
-using SignalR.Nsb.Poc.NServiceBus;
 
 namespace SignalR.Nsb.Poc.Shipping
 {
-    class Program
+    internal class Program
     {
-        private const string Label = "SignalR.Nsb.Poc.Shipping";
+        private static readonly SemaphoreSlim Semaphore = new SemaphoreSlim(0);
 
-        static async Task Main()
+        private delegate bool HandlerRoutine(CtrlTypes ctrlType);
+
+        private static async Task Main(string[] args)
         {
-            Console.Title = Label;
-            
-            var builder = new EndpointInstanceBuilder();
-            var startableEndpoint = await builder.Create(Label).Build();
-            var endpointInstance = await startableEndpoint.Start();
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                SetConsoleCtrlHandler(ConsoleCtrlCheck, true);
+            }
+            else
+            {
+                Console.CancelKeyPress += CancelKeyPress;
+                AppDomain.CurrentDomain.ProcessExit += ProcessExit;
+            }
 
-            Console.WriteLine("Press Enter to Exit");
-            Console.ReadLine();
+            var host = new Host();
 
-            await endpointInstance.Stop().ConfigureAwait(false);
+            Console.Title = host.Label;
+
+            await host.Start();
+            await Console.Out.WriteLineAsync("Press Ctrl+C to exit...");
+
+            // wait until notified that the process should exit
+            await Semaphore.WaitAsync();
+
+            await host.Stop();
         }
+
+        static void CancelKeyPress(object sender, ConsoleCancelEventArgs e)
+        {
+            e.Cancel = true;
+            Semaphore.Release();
+        }
+
+        static void ProcessExit(object sender, EventArgs e)
+        {
+            Semaphore.Release();
+        }
+
+        private static bool ConsoleCtrlCheck(CtrlTypes ctrlType)
+        {
+            Semaphore.Release();
+
+            return true;
+        }
+
+        // imports required for a Windows container to successfully notice when a "docker stop" command
+        // has been run and allow for a graceful shutdown of the endpoint
+        [DllImport("Kernel32")]
+        private static extern bool SetConsoleCtrlHandler(HandlerRoutine handler, bool add);
     }
 }

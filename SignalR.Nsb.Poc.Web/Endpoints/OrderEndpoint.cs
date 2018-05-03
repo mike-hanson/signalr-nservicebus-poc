@@ -32,10 +32,10 @@ namespace SignalR.Nsb.Poc.Web.Endpoints
 
                     tc.UseConventionalRoutingTopology();
 
-                    // swap these lines when running in containers
-                    // this doesn't work at the moment due to issues accessing RabbitMQ from containers
-                    //tc.ConnectionString("host=rabbitmq1");
-                    tc.ConnectionString("host=wp29007.flprod.co.uk");
+                    // swap these lines to switch between running in containers or running locally
+                    // not to run locally you wil need to install RabbitMQ
+                    //tc.ConnectionString("host=localhost");
+                    tc.ConnectionString("host=rabbitmq;username=admin;password=password");
                 })
                 .WithRegisteredComponents(c => { c.RegisterSingleton(_orderHubMessageDispatcher); })
                 .Build();

@@ -19,13 +19,13 @@ namespace SignalR.Nsb.Poc.NServiceBus
         {
             _configuration = new EndpointConfiguration(endpointAddress);
             
-            var tansport = _configuration.UseTransport<RabbitMQTransport>();
+            var transport = _configuration.UseTransport<RabbitMQTransport>();
 
-            // swap these lines when running in containers
-            // this doesn't work at the moment due to issues accessing RabbitMQ from containers
-            tansport.ConnectionString("host=rabbitmq;username=admin;password=password");
-//            tansport.ConnectionString("host=WP29007.flprod.co.uk");
-            tansport.UseConventionalRoutingTopology();
+            // swap these lines to switch between running in containers or running locally
+            // not to run locally you wil need to install RabbitMQ
+            //transport.ConnectionString("host=localhost");
+            transport.ConnectionString("host=rabbitmq;username=admin;password=password");
+            transport.UseConventionalRoutingTopology();
 
             _configuration.EnableInstallers();
             _configuration.AuditProcessedMessagesTo("audit");
